@@ -52,7 +52,10 @@ public class BasketTest {
 
     @Test
     public void canTotalBasketPrice(){
+        basket.add(item);
+        basket.add(item2);
         double result = basket.getTotalItemsPrice();
+        assertEquals(3.50, result);
     }
 
 }
