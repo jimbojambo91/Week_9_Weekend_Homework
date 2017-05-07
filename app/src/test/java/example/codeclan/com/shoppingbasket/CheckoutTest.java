@@ -31,4 +31,12 @@ public class CheckoutTest {
         int result = checkout.getCurrentBogofSize();
         assertEquals(1, result);
     }
+
+    @Test
+    public void CheckoutCanRemoveBogofItems(){
+        checkout.addToCurrentBogof("Banana");
+        checkout.removeFromCurrentBogof("Banana");
+        int result = checkout.getCurrentBogofSize();
+        assertEquals(0, result);
+    }
 }

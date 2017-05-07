@@ -24,4 +24,8 @@ public class Checkout {
     public void addToCurrentBogof(String item) {
         currentBogof.add(item);
     }
+
+    public void removeFromCurrentBogof(String item){
+        currentBogof.remove(item);
+    }
 }
