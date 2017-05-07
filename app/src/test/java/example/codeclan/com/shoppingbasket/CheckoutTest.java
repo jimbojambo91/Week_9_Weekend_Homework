@@ -15,6 +15,7 @@ public class CheckoutTest {
     Item item;
     Item item2;
     Basket basket;
+    Basket basket2;
 
 
     @Before
@@ -22,7 +23,8 @@ public class CheckoutTest {
         checkout = new Checkout();
         item = new Item ("Banana", 2.50);
         item2 = new Item ("Grapes", 1.00);
-        basket = new Basket();
+        basket = new Basket(false);
+        basket2 = new Basket(true);
     }
 
     @Test
@@ -38,5 +40,14 @@ public class CheckoutTest {
         checkout.removeFromCurrentBogof("Banana");
         int result = checkout.getCurrentBogofSize();
         assertEquals(0, result);
+    }
+
+    @Test
+    public void checkCurrentBogofVersusBasket(){
+        checkout.addToCurrentBogof("Banana");
+        basket.add(item);
+        basket.add(item);
+        basket.add(item2);
+        checkout.checkBogofSaving(basket);
     }
 }

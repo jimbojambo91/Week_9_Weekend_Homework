@@ -28,4 +28,35 @@ public class Checkout {
     public void removeFromCurrentBogof(String item){
         currentBogof.remove(item);
     }
+
+    public double processBasketPrice(Basket basket){
+        double saving = checkBogofSaving(basket);
+        double basketPrice = basket.getTotalItemsPrice() - saving;
+        if((basketPrice) > 20.00 ){
+            basketPrice = basketPrice * 0.90;
+        }
+        if(basket.getLoyaltyCard()){
+            basketPrice = basketPrice * 0.98;
+        }
+
+        return basketPrice;
+    }
+
+    public double checkBogofSaving(Basket basket) {
+        double saving = 0;
+        for(String StoreBogof: currentBogof){
+            int counter = 0;
+            for(Item item: basket.getItems()){
+                if(item.getName().equals(StoreBogof)){
+                    counter ++;
+                    if(counter == 2){
+                        saving =+ item.getPrice();
+                        counter = 0;
+                    }
+                }
+
+            }
+        }
+        return saving;
+    }
 }

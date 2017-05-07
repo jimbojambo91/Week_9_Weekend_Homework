@@ -8,9 +8,11 @@ import java.util.ArrayList;
 
 public class Basket {
     private ArrayList<Item> items;
+    private boolean loyaltyCard;
 
-    public Basket(){
+    public Basket(boolean loyaltyCard){
         this.items = new ArrayList<Item>();
+        this.loyaltyCard = loyaltyCard;
     }
 
     public int getItemsCount() {
@@ -39,5 +41,9 @@ public class Basket {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public boolean getLoyaltyCard() {
+        return loyaltyCard;
     }
 }

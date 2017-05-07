@@ -17,7 +17,7 @@ public class BasketTest {
     @Before
     public void before(){
         item = new Item ("Banana", 2.50);
-        basket = new Basket();
+        basket = new Basket(true);
         item2 = new Item ("Grapes", 1.00);
     }
 
@@ -56,6 +56,12 @@ public class BasketTest {
         basket.add(item2);
         double result = basket.getTotalItemsPrice();
         assertEquals(3.50, result);
+    }
+
+    @Test
+    public void hasLoyaltyCard(){
+        boolean result = basket.getLoyaltyCard();
+        assertEquals(true, result);
     }
 
 }
