@@ -48,6 +48,35 @@ public class CheckoutTest {
         basket.add(item);
         basket.add(item);
         basket.add(item2);
-        checkout.checkBogofSaving(basket);
+        double result = checkout.checkBogofSaving(basket);
+        assertEquals(2.50, result);
+
+    }
+
+    @Test
+    public void checkOver20Gets10PercentOff(){
+        Item expensiveItem = new Item("Xbox", 200.00);
+        basket.add(expensiveItem);
+        double result = checkout.processBasketPrice(basket);
+        assertEquals(180.00, result);
+    }
+
+    @Test
+    public void checkLoyaltyCardGets2PercentOff(){
+        basket2.add(item);
+        double result = checkout.processBasketPrice(basket2);
+        assertEquals(2.45,result);
+    }
+
+    @Test
+    public void checkAllDiscountsCanBeAppliedAtOnce(){
+        Item expensiveItem = new Item("Xbox", 200.00);
+        checkout.addToCurrentBogof("Banana");
+        basket2.add(expensiveItem);
+        basket2.add(item);
+        basket2.add(item);
+        basket2.add(item2);
+        double result = checkout.processBasketPrice(basket2);
+        assertEquals(179.49,result);
     }
 }

@@ -39,7 +39,7 @@ public class Checkout {
             basketPrice = basketPrice * 0.98;
         }
 
-        return basketPrice;
+        return Math.round(basketPrice * 100d) / 100d ;
     }
 
     public double checkBogofSaving(Basket basket) {
