@@ -91,4 +91,15 @@ public class CheckoutTest {
         double result = checkout.processBasketPrice(basket);
         assertEquals(3.50,result);
     }
+
+    @Test
+    public void ensuringMultipleBogofDealsWorkOnSameItem(){
+        checkout.addToCurrentBogof("Banana");
+        basket.add(item);
+        basket.add(item);
+        basket.add(item);
+        basket.add(item);
+        double result = checkout.processBasketPrice(basket);
+        assertEquals(5.00,result);
+    }
 }
