@@ -50,7 +50,7 @@ public class Checkout {
                 if(item.getName().equals(StoreBogof)){
                     counter ++;
                     if(counter == 2){
-                        saving =+ item.getPrice();
+                        saving += item.getPrice();
                         counter = 0;
                     }
                 }

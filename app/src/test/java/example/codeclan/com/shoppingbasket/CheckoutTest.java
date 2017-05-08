@@ -79,4 +79,16 @@ public class CheckoutTest {
         double result = checkout.processBasketPrice(basket2);
         assertEquals(179.49,result);
     }
+
+    @Test
+    public void ensuringMultipleBogofDealsWork(){
+        checkout.addToCurrentBogof("Banana");
+        checkout.addToCurrentBogof("Grapes");
+        basket.add(item);
+        basket.add(item);
+        basket.add(item2);
+        basket.add(item2);
+        double result = checkout.processBasketPrice(basket);
+        assertEquals(3.50,result);
+    }
 }
